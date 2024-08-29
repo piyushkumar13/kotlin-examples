@@ -10,3 +10,4 @@ plugins {
 }
 
 rootProject.name = "kotlin-examples"
+include("kotlin-core-examples")
