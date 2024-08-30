@@ -9,6 +9,7 @@ version = "1.0-SNAPSHOT"
 dependencies {
     implementation("org.apache.commons:commons-lang3")
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
 application {

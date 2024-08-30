@@ -20,14 +20,23 @@ subprojects {
 
     version = "1.0-SNAPSHOT"
 
-    java {
-        toolchain {
-            languageVersion.set(JavaLanguageVersion.of(17))
-        }
-    }
-
+    /*Note that setting a toolchain via the kotlin extension updates the toolchain for Java compile tasks as well.*/
     kotlin {
         jvmToolchain(17)
+    }
+
+    /* So, this is not required as setting a toolchain via the kotlin extension updates the toolchain for Java compile tasks as well. */
+//    java {
+//        toolchain {
+//            languageVersion.set(JavaLanguageVersion.of(17))
+//        }
+//    }
+
+
+    /* Refer this for below config : https://kotlinlang.org/docs/gradle-configure-project.html#check-for-jvm-target-compatibility-of-related-compile-tasks
+    *  However, below configuration is not required as incompatibility between kotlin and java will be avoided as we have set jvmToolchain(17) above. */
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
+        jvmTargetValidationMode.set(org.jetbrains.kotlin.gradle.dsl.jvm.JvmTargetValidationMode.WARNING)
     }
 
     repositories {
@@ -42,14 +51,15 @@ subprojects {
         
         dependencies {
             dependency("org.apache.commons:commons-lang3:3.14.0")
-            dependency ("org.junit:j    unit-bom:5.9.1")
             dependency("org.junit.jupiter:junit-jupiter:5.9.1")
+            dependency("org.jetbrains.kotlin:kotlin-test:2.0.20")
         }
     }
 }
 
 
-
+/* Following configuration is same as dependencies { testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.9.10") }
+*  which I have specified in dependencyManagement as dependency and imported it in modules. */
 //dependencies {
 //    testImplementation(kotlin("test"))
 //}
