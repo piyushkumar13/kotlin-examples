@@ -21,6 +21,9 @@ fun main() {
         in 3..5 -> {
             println("x is in range 3-5.")
         }
+        is Number -> {
+            println("x is Number")
+        }
 
         else -> {
             println("x is nowhere defined in when statement")
