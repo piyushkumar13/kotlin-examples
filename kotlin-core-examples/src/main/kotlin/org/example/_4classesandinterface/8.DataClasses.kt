@@ -5,7 +5,7 @@ package org.example._4classesandinterface
  * @since 07/09/24.
  */
 
-fun main(){
+fun main() {
 
     val user1 = User("Piyush", "Kumar")
     val user2 = User("Piyush", "Kumar")
@@ -15,9 +15,9 @@ fun main(){
     println("User1 : $user1")
     println("User2 : $user2")
 
-    if (user1 == user2){
+    if (user1 == user2) {
         println("Objects are equal.")
-    }else{
+    } else {
         println("Objects are not equal.")
     }
 
@@ -26,4 +26,4 @@ fun main(){
     println("Destructured lastName : $lastName")
 }
 
-data class User(var firstName:String, val lastName: String)
+data class User(var firstName: String, val lastName: String)
