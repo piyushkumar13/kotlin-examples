@@ -1,7 +1,6 @@
 package com.example.springbootkotlinktorm.repository
 
-import com.example.springbootkotlinktorm.domain.Employee
-import com.example.springbootkotlinktorm.domain.Employees
+import com.example.springbootkotlinktorm.controller.dto.Employee
 import org.springframework.stereotype.Repository
 
 /**
@@ -13,5 +12,5 @@ import org.springframework.stereotype.Repository
 interface EmployeeKtormSqlDslRepository {
 
 
-    fun createEmployeeViaSqlDsl(employeeSqlDsl: Employees)
+    fun createEmployeeViaSqlDsl(employeeSqlDsl: Employee)
 }

@@ -27,5 +27,7 @@ data class DepartmentJPAEntity(
 
     @Id
     private var id: Int,
+
+    @Column(name = "department_name")
     private var name: String
 )

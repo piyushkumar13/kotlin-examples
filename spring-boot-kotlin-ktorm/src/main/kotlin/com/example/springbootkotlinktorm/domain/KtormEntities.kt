@@ -15,7 +15,7 @@ object Employees : Table<Employee>("p_employees") {
     val id = int("id").primaryKey().bindTo { it.id }
     val name = varchar("name").bindTo { it.name }
     val company = varchar("company").bindTo { it.companyName }
-    val departmentId = int("department_id").references(Departments) { it.department }
+    val departmentId = int("department_id").references(Departments) { it.department }.bindTo { it.department?.id }
 }
 
 object Departments : Table<Department>("p_departments") {
@@ -31,7 +31,7 @@ interface Employee : Entity<Employee> {
     var id: Int
     var name: String
     var companyName: String
-    var department: Department
+    var department: Department?
 }
 
 interface Department : Entity<Department> {

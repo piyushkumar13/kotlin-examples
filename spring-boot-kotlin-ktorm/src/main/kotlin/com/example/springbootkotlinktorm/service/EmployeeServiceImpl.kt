@@ -1,10 +1,7 @@
 package com.example.springbootkotlinktorm.service
 
 import com.example.springbootkotlinktorm.controller.dto.Employee
-import com.example.springbootkotlinktorm.domain.Department
-import com.example.springbootkotlinktorm.domain.DepartmentJPAEntity
-import com.example.springbootkotlinktorm.domain.EmployeeAnnotated
-import com.example.springbootkotlinktorm.domain.EmployeeJPAEntity
+import com.example.springbootkotlinktorm.domain.*
 import com.example.springbootkotlinktorm.repository.EmployeeJPARepository
 import com.example.springbootkotlinktorm.repository.EmployeeKtormAnnotationRepository
 import com.example.springbootkotlinktorm.repository.EmployeeKtormEntityRepository
@@ -27,7 +24,6 @@ class EmployeeServiceImpl(
 
 ) : EmployeeService {
 
-
     override fun createEmployeeViaJpa(employee: Employee): Employee {
 
         val deptEntity = departmentJPAEntity(employee.department.id, employee.department.name)
@@ -35,6 +31,7 @@ class EmployeeServiceImpl(
 
         employeeJPARepository.save(empEntity)
 
+        println("Record inserted successfully via sql dsl")
         return employee
     }
 
@@ -49,28 +46,39 @@ class EmployeeServiceImpl(
             id = employee.id
             name = employee.name
             companyName = employee.companyName
-            department = deptViaKtormEntity
         }
 
-        employeeKtormEntityRepository.createEmployeeViaEntity(employeeViaKtormEntity)
+        employeeKtormEntityRepository.createEmployeeViaEntity(employeeViaKtormEntity, deptViaKtormEntity)
+
+        println("Record inserted successfully via Ktorm entity")
 
         return employee;
     }
 
     override fun createEmployeeViaSqlDsl(employee: Employee): Employee {
 
+        employeeKtormSqlDslRepository.createEmployeeViaSqlDsl(employee)
+
+        println("Record inserted successfully via ktorm sql dsl")
+
         return employee
     }
 
     override fun createEmployeeViaKtormAnnotation(employee: Employee): Employee {
 
+        val departmentAnnotated = DepartmentAnnotated(
+            id = employee.department.id,
+            name = employee.department.name
+        )
         val employeeAnnotated = EmployeeAnnotated(
             id = employee.id,
             name = employee.name,
-            companyName = employee.companyName
+            companyName = employee.companyName,
         )
 
-        employeeKtormAnnotationRepository.createEmployee(employeeAnnotated)
+        employeeKtormAnnotationRepository.createEmployee(employeeAnnotated, departmentAnnotated)
+
+        println("Record inserted successfully via ktorm ksr annotations")
 
         return employee
     }

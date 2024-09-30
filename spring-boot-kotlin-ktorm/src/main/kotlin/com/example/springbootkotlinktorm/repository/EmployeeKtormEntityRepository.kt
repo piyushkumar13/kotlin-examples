@@ -1,5 +1,6 @@
 package com.example.springbootkotlinktorm.repository
 
+import com.example.springbootkotlinktorm.domain.Department
 import com.example.springbootkotlinktorm.domain.Employee
 import org.springframework.stereotype.Repository
 
@@ -11,5 +12,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface EmployeeKtormEntityRepository {
 
-    fun createEmployeeViaEntity(employeeKtormEntity: Employee)
+    fun createEmployeeViaEntity(employeeKtormEntity: Employee, departmentKtormEntity: Department)
 }
