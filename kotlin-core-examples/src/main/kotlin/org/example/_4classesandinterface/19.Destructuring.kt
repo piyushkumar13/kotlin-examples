@@ -44,5 +44,4 @@ fun main(){
     val mapValues = myMap.mapValues { (key, value) -> "key:$key-value:$value" }
     println("\n mapValues map : $mapValues ")
 
-
 }

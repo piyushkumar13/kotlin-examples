@@ -1,0 +1,97 @@
+package com.example.springbootkotlinktorm.service
+
+import com.example.springbootkotlinktorm.controller.dto.Employee
+import com.example.springbootkotlinktorm.domain.Department
+import com.example.springbootkotlinktorm.domain.DepartmentJPAEntity
+import com.example.springbootkotlinktorm.domain.EmployeeAnnotated
+import com.example.springbootkotlinktorm.domain.EmployeeJPAEntity
+import com.example.springbootkotlinktorm.repository.EmployeeJPARepository
+import com.example.springbootkotlinktorm.repository.EmployeeKtormAnnotationRepository
+import com.example.springbootkotlinktorm.repository.EmployeeKtormEntityRepository
+import com.example.springbootkotlinktorm.repository.EmployeeKtormSqlDslRepository
+import org.springframework.stereotype.Service
+
+/**
+ * @author Piyush Kumar.
+ * @since 29/09/24.
+ */
+
+
+@Service
+class EmployeeServiceImpl(
+
+    private val employeeJPARepository: EmployeeJPARepository,
+    private val employeeKtormEntityRepository: EmployeeKtormEntityRepository,
+    private val employeeKtormSqlDslRepository: EmployeeKtormSqlDslRepository,
+    private val employeeKtormAnnotationRepository: EmployeeKtormAnnotationRepository
+
+) : EmployeeService {
+
+
+    override fun createEmployeeViaJpa(employee: Employee): Employee {
+
+        val deptEntity = departmentJPAEntity(employee.department.id, employee.department.name)
+        val empEntity = empEntity(employee.id, employee.name, employee.companyName, deptEntity)
+
+        employeeJPARepository.save(empEntity)
+
+        return employee
+    }
+
+    override fun createEmployeeViaKtormEntity(employee: Employee): Employee {
+
+        val deptViaKtormEntity = Department {
+            id = employee.department.id
+            name = employee.department.name
+        }
+
+        val employeeViaKtormEntity = com.example.springbootkotlinktorm.domain.Employee {
+            id = employee.id
+            name = employee.name
+            companyName = employee.companyName
+            department = deptViaKtormEntity
+        }
+
+        employeeKtormEntityRepository.createEmployeeViaEntity(employeeViaKtormEntity)
+
+        return employee;
+    }
+
+    override fun createEmployeeViaSqlDsl(employee: Employee): Employee {
+
+        return employee
+    }
+
+    override fun createEmployeeViaKtormAnnotation(employee: Employee): Employee {
+
+        val employeeAnnotated = EmployeeAnnotated(
+            id = employee.id,
+            name = employee.name,
+            companyName = employee.companyName
+        )
+
+        employeeKtormAnnotationRepository.createEmployee(employeeAnnotated)
+
+        return employee
+    }
+
+
+    private fun empEntity(id: Int, name: String, company: String, deptEntity: DepartmentJPAEntity): EmployeeJPAEntity {
+
+        return EmployeeJPAEntity(
+            id = id,
+            name = name,
+            company = company,
+            department = deptEntity
+        )
+    }
+
+    private fun departmentJPAEntity(id: Int, name: String): DepartmentJPAEntity {
+
+        return DepartmentJPAEntity(
+            id = id,
+            name = name
+        )
+    }
+
+}

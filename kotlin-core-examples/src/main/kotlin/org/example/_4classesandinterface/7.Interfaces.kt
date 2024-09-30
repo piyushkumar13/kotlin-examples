@@ -19,7 +19,7 @@ fun main(){
 
 interface MyInterface1 {
 
-    val name: String
+    val name: String // we can declare properties in interface but it should be abstracted means it should not be initialized.
 
     fun printInterfaceName1(){
         println("Inside MyInterface1")

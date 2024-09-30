@@ -10,4 +10,4 @@ plugins {
 }
 
 rootProject.name = "kotlin-examples"
-include("kotlin-core-examples")
+include("kotlin-core-examples", "spring-boot-kotlin-ktorm")

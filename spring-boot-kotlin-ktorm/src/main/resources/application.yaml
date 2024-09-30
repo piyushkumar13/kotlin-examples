@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-boot-kotlin-ktorm
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pikumar?currentSchema=public
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true

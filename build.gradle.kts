@@ -1,8 +1,23 @@
 plugins {
     kotlin("jvm") version "2.0.20"
     application
-    id("io.spring.dependency-management") version "1.1.4"
+    kotlin("plugin.spring") version "1.9.25" apply false
+    id("org.springframework.boot") version "3.3.4" apply false
+    kotlin("plugin.jpa") version "1.8.0" apply false
+    id("io.spring.dependency-management") version "1.1.6"
+    id("com.google.devtools.ksp") version "2.0.20-1.0.24" apply false
 }
+
+
+/* How to access properties in build.gradle.kts https://stackoverflow.com/a/73573014 */
+val springBootVersion : String by project
+println("springBootVersion : $springBootVersion")
+
+val springBootVersionByProvider = providers.gradleProperty("springBootVersion")
+println("springBootVersionByProvider : $springBootVersion")
+
+val ktormVersion: String = project.findProperty("ktorm.version") as String
+println("ktormVersion : ${ktormVersion}")
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
@@ -17,6 +32,18 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "java")
     apply(plugin = "io.spring.dependency-management")
+
+    println("The subproject is ::: ${this.name}")
+
+    if (this.name == "spring-boot-kotlin-ktorm"){
+
+        println("Applying to module : spring-boot-kotlin-ktorm")
+
+        apply(plugin = "org.springframework.boot")
+        apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+        apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+        apply(plugin = "com.google.devtools.ksp")
+    }
 
     version = "1.0-SNAPSHOT"
 
@@ -48,15 +75,19 @@ subprojects {
     }
 
     dependencyManagement{
-        
+
         dependencies {
             dependency("org.apache.commons:commons-lang3:3.14.0")
             dependency("org.junit.jupiter:junit-jupiter:5.9.1")
             dependency("org.jetbrains.kotlin:kotlin-test:2.0.20")
+            dependency("org.ktorm:ktorm-core:${ktormVersion}")
+            dependency("org.ktorm:ktorm-support-postgresql:${ktormVersion}")
+            dependency("org.ktorm:ktorm-ksp-annotations:${ktormVersion}")
+            dependency("org.ktorm:ktorm-ksp-compiler:${ktormVersion}")
+            dependency("org.postgresql:postgresql:42.7.4")
         }
     }
 }
-
 
 /* Following configuration is same as dependencies { testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.9.10") }
 *  which I have specified in dependencyManagement as dependency and imported it in modules. */
