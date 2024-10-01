@@ -1,9 +1,11 @@
 package com.example.springbootkotlinktorm.controller
 
 import com.example.springbootkotlinktorm.controller.dto.Employee
+import com.example.springbootkotlinktorm.domain.value.Emp
 import com.example.springbootkotlinktorm.service.EmployeeService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -19,7 +21,7 @@ class EmployeeController {
     private lateinit var employeeService: EmployeeService
 
     @GetMapping("/test-exception")
-    fun testException(){
+    fun testException() {
 
         throw IllegalArgumentException("Testing exception")
     }
@@ -59,5 +61,18 @@ class EmployeeController {
     fun createEmployeeViaKtormAnnotation(@RequestBody employee: Employee) {
 
         employeeService.createEmployeeViaKtormAnnotation(employee)
+    }
+
+    @GetMapping("/employees/{empId}/departments/{deptId}/ktorm-sql-dsl")
+    fun getEmployeeViaKtormSqlDsl(@PathVariable empId: Int, @PathVariable deptId: Int): Emp {
+        return employeeService.getEmpoyeeViaKtormSqlDsl(empId, deptId)
+    }
+
+    @GetMapping("/employees/{empId}/departments/{deptId}/ktorm-entity")
+    fun getEmployeeViaKtormEntity(
+        @PathVariable empId: Int,
+        @PathVariable deptId: Int
+    ): com.example.springbootkotlinktorm.domain.Employee {
+        return employeeService.getEmpoyeeViaKtormEntity(empId, deptId)
     }
 }

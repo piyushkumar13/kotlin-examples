@@ -1,6 +1,7 @@
 package com.example.springbootkotlinktorm.service
 
 import com.example.springbootkotlinktorm.controller.dto.Employee
+import com.example.springbootkotlinktorm.domain.value.Emp
 
 /**
  * @author Piyush Kumar.
@@ -20,5 +21,8 @@ interface EmployeeService {
 
     fun createEmployeeViaKtormAnnotation(employee: Employee): Employee
 
+    fun getEmpoyeeViaKtormSqlDsl(empId: Int, deptId: Int): Emp
+
+    fun getEmpoyeeViaKtormEntity(empId: Int, deptId: Int): com.example.springbootkotlinktorm.domain.Employee
 
 }

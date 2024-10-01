@@ -4,6 +4,7 @@ import com.example.springbootkotlinktorm.domain.Department
 import com.example.springbootkotlinktorm.domain.Departments
 import com.example.springbootkotlinktorm.domain.Employee
 import com.example.springbootkotlinktorm.domain.Employees
+import com.example.springbootkotlinktorm.domain.value.Emp
 import com.example.springbootkotlinktorm.repository.EmployeeKtormEntityRepository
 import org.ktorm.database.Database
 import org.ktorm.dsl.eq
@@ -32,5 +33,15 @@ class EmployeeKtormEntityRepositoryImpl(private var database: Database): Employe
         database.sequenceOf(Employees)
             .add(employee)
 
+    }
+
+    override fun getEmployeeViaKtormEntity(empId: Int, deptId: Int): Employee? {
+        val emp = database.sequenceOf(Employees, false)
+            .find { it.id eq empId }
+
+
+        println("Fetched record entity is : $emp")
+
+        return emp
     }
 }

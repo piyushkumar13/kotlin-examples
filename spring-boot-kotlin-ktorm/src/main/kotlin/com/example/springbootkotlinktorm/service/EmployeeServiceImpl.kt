@@ -2,6 +2,7 @@ package com.example.springbootkotlinktorm.service
 
 import com.example.springbootkotlinktorm.controller.dto.Employee
 import com.example.springbootkotlinktorm.domain.*
+import com.example.springbootkotlinktorm.domain.value.Emp
 import com.example.springbootkotlinktorm.repository.EmployeeJPARepository
 import com.example.springbootkotlinktorm.repository.EmployeeKtormAnnotationRepository
 import com.example.springbootkotlinktorm.repository.EmployeeKtormEntityRepository
@@ -99,6 +100,21 @@ class EmployeeServiceImpl(
         return employee
     }
 
+    override fun getEmpoyeeViaKtormSqlDsl(empId: Int, deptId: Int): Emp {
+        val employeeViaSqlDsl = employeeKtormSqlDslRepository.getEmployeeViaSqlDsl(empId, deptId)
+
+        println("Record feched successfully via ktorm sql dsl")
+
+        return employeeViaSqlDsl
+    }
+
+    override fun getEmpoyeeViaKtormEntity(empId: Int, deptId: Int): com.example.springbootkotlinktorm.domain.Employee {
+        val employeeViaKtormEntity = employeeKtormEntityRepository.getEmployeeViaKtormEntity(empId, deptId)
+
+        println("Record feched successfully via ktorm entity")
+
+        return employeeViaKtormEntity!!
+    }
 
     private fun empEntity(id: Int, name: String, company: String, deptEntity: DepartmentJPAEntity): EmployeeJPAEntity {
 
