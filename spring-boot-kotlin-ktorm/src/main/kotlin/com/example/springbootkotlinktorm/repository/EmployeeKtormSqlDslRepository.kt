@@ -13,4 +13,9 @@ interface EmployeeKtormSqlDslRepository {
 
 
     fun createEmployeeViaSqlDsl(employeeSqlDsl: Employee)
+
+    fun createEmployeeViaSqlDslUsingTransaction(employeeSqlDsl: Employee)
+
+    fun createEmployeeViaSqlDslUsingSpringTransaction(employeeSqlDsl: Employee)
+
 }

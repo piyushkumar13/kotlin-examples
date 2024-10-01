@@ -64,6 +64,22 @@ class EmployeeServiceImpl(
         return employee
     }
 
+    override fun createEmployeeViaSqlDslUsingKtormTransaction(employee: Employee): Employee {
+
+        employeeKtormSqlDslRepository.createEmployeeViaSqlDslUsingTransaction(employee)
+        println("Record inserted successfully via ktorm sql dsl using useTransaction")
+
+        return employee
+    }
+
+    override fun createEmployeeViaSqlDslUsingKtormSpringTransaction(employee: Employee): Employee {
+
+        employeeKtormSqlDslRepository.createEmployeeViaSqlDslUsingSpringTransaction(employee)
+        println("Record inserted successfully via ktorm sql dsl using spring transaction")
+
+        return employee
+    }
+
     override fun createEmployeeViaKtormAnnotation(employee: Employee): Employee {
 
         val departmentAnnotated = DepartmentAnnotated(

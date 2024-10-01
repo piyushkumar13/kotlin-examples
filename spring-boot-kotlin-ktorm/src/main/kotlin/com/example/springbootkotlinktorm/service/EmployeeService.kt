@@ -14,6 +14,10 @@ interface EmployeeService {
 
     fun createEmployeeViaSqlDsl(employee: Employee): Employee
 
+    fun createEmployeeViaSqlDslUsingKtormTransaction(employee: Employee): Employee
+
+    fun createEmployeeViaSqlDslUsingKtormSpringTransaction(employee: Employee): Employee
+
     fun createEmployeeViaKtormAnnotation(employee: Employee): Employee
 
 

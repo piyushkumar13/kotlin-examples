@@ -31,5 +31,6 @@ class EmployeeKtormEntityRepositoryImpl(private var database: Database): Employe
 
         database.sequenceOf(Employees)
             .add(employee)
+
     }
 }

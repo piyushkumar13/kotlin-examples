@@ -1,9 +1,14 @@
 package com.example.springbootkotlinktorm
 
+import com.example.springbootkotlinktorm.config.DbConfigProperties5
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
+//@EnableConfigurationProperties(DbConfigProperties5::class)
+@ConfigurationPropertiesScan // We can use this it will scan all the configuration properties falling within the child packages.
 class SpringBootKotlinKtormApplication
 
 fun main(args: Array<String>) {

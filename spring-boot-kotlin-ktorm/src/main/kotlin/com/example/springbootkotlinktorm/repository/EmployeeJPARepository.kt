@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController
  * @author Piyush Kumar.
  * @since 29/09/24.
  */
-
 interface EmployeeJPARepository: JpaRepository<EmployeeJPAEntity, Int> {
 
 

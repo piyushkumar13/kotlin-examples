@@ -3,6 +3,7 @@ package com.example.springbootkotlinktorm.controller
 import com.example.springbootkotlinktorm.controller.dto.Employee
 import com.example.springbootkotlinktorm.service.EmployeeService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -17,6 +18,13 @@ class EmployeeController {
     @Autowired
     private lateinit var employeeService: EmployeeService
 
+    @GetMapping("/test-exception")
+    fun testException(){
+
+        throw IllegalArgumentException("Testing exception")
+    }
+
+
     @PostMapping("/employees/jpa")
     fun createEmployeeViaJpa(@RequestBody employee: Employee) {
 
@@ -27,6 +35,18 @@ class EmployeeController {
     fun createEmployeeViaKtormSqlDsl(@RequestBody employee: Employee) {
 
         employeeService.createEmployeeViaSqlDsl(employee)
+    }
+
+    @PostMapping("/employees/ktorm-sql-dsl/ktorm-transaction")
+    fun createEmployeeViaKtormSqlDslUsingKtormTransaction(@RequestBody employee: Employee) {
+
+        employeeService.createEmployeeViaSqlDslUsingKtormTransaction(employee)
+    }
+
+    @PostMapping("/employees/ktorm-sql-dsl/ktorm-spring-transaction")
+    fun createEmployeeViaKtormSqlDslUsingKtormSpringTransaction(@RequestBody employee: Employee) {
+
+        employeeService.createEmployeeViaSqlDslUsingKtormSpringTransaction(employee)
     }
 
     @PostMapping("/employees/ktorm-entity")
