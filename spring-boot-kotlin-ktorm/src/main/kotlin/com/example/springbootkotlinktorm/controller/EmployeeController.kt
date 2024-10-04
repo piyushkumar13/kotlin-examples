@@ -72,7 +72,11 @@ class EmployeeController {
     fun getEmployeeViaKtormEntity(
         @PathVariable empId: Int,
         @PathVariable deptId: Int
-    ): com.example.springbootkotlinktorm.domain.Employee {
-        return employeeService.getEmpoyeeViaKtormEntity(empId, deptId)
+    ): Emp {
+
+        val empoyeeViaKtormEntity = employeeService.getEmpoyeeViaKtormEntity(empId, deptId)
+
+        return Emp(empoyeeViaKtormEntity.id, empoyeeViaKtormEntity.name, empoyeeViaKtormEntity.companyName, empoyeeViaKtormEntity.department?.id)
+
     }
 }

@@ -7,5 +7,6 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+#      ddl-auto: none
+      ddl-auto: create # toggle to none once db schema is created.
     show-sql: true
