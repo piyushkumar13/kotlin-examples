@@ -11,7 +11,7 @@ package org.example._4classesandinterface
 *
 * Few points about sealed classes :
 *
-* The subclasses of sealed class must be defined in the same file where sealed class is declared.
+* The subclasses of sealed class must be defined in the same file/or same package where sealed class is declared.
 * Subclasses can be regular class, data class, object class, or even another sealed class or sealed interface.
 * Sealed class ensures type-safety by restricting set of types at compile time only.
 * A sealed class is implicitly abstract whose object cannot be created.
@@ -29,9 +29,11 @@ sealed class Shapes{
 
 //    sealed class Cone: Shapes()
 //    sealed interface Draw
+
+//    abstract fun printMsg()
 }
 
-class Line: Shapes()
+class Line(val length: Int): Shapes()
 
 fun main(){
 
@@ -39,8 +41,10 @@ fun main(){
     val rectangle = Shapes.Rectangle(12, 23)
     val traingle = Shapes.Triangle(12)
     val circle = Shapes.Circle
+    val line = Line(2)
 
     checkShape(circle)
+    checkShape(line)
 }
 
 fun checkShape(shape: Shapes){
@@ -61,6 +65,9 @@ fun checkShape(shape: Shapes){
 
         is Shapes.Circle -> {
             println("Its a circle.")
+        }
+        is Line -> {
+            println("Its a line")
         }
 
         else -> {

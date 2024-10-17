@@ -10,6 +10,9 @@ fun main(){
 
     val values = listOf(1, 2, 5,)
     printVarargs(*values.toIntArray()) // https://stackoverflow.com/a/45855062
+    printVarargs(*arrayOf(1,2,3,4).toIntArray())
+    printVarargs(*intArrayOf(1,6,2,6,2))
+
 
 }
 

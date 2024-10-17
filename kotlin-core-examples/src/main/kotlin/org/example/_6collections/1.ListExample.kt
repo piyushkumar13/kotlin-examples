@@ -32,6 +32,10 @@ fun main(){
         print("${arrayListOf[index]} ")
     }
 
+    val arrayListOf1 = arrayListOf<String>() // empty arrayList which is filled later.
+    arrayListOf1.add("Hellp")
+    println("arrayListOf1 after adding elements : $arrayListOf1")
+
     var arrayList = ArrayList<String>()
     arrayList.add("English")
     arrayList.add("Sanskrit")
