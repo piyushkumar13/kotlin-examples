@@ -45,4 +45,43 @@ fun main() {
     }
 
     println("Str is : $str")
+
+
+    /*
+    * Using when as a replacement for an if-else-if chain:
+    * We can use when as a replacement for if-else-if.
+    * If no argument is supplied then the branch conditions are simply boolean expressions,
+    * and a branch is executed only when its condition is true:
+    * */
+    fun isOdd(x: Int) = x % 2 != 0
+    fun isEven(x: Int) = x % 2 == 0
+
+    var num = 8
+    when {
+        isOdd(num) -> println("Odd")
+        isEven(num) -> println("Even")
+        else -> println("Neither even nor odd")
+    }
+
+    /*
+    * Check that a string contains a particular prefix or suffix:
+    * We can also check prefix or suffix in a given string by the below method.
+    * If the string contains the prefix or suffix then it will return the Boolean value true else return false.
+    * */
+    fun hasPrefix(company: Any):Boolean{
+        return when (company) {
+            is String -> company.startsWith("GeeksforGeeks")
+            else -> false
+        }
+    }
+
+    var company = "GeeksforGeeks a computer science portal"
+    var result = hasPrefix(company)
+    if(result) {
+        println("Yes, string started with GeeksforGeeks")
+    }
+    else {
+        println("No, String does not started with GeeksforGeeks")
+    }
+
 }

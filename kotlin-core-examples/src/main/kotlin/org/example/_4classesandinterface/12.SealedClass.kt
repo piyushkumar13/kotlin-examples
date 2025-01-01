@@ -15,7 +15,7 @@ package org.example._4classesandinterface
 * Subclasses can be regular class, data class, object class, or even another sealed class or sealed interface.
 * Sealed class ensures type-safety by restricting set of types at compile time only.
 * A sealed class is implicitly abstract whose object cannot be created.
-* By default, the constructor of sealed class is private, and we cannot make it as non-private.
+* By default, the constructor of sealed class is private, and we cannot make it as non-private means it cannot be instantiated.
 *
 * */
 sealed class Shapes{

@@ -20,7 +20,7 @@ package org.example._4classesandinterface
 
 /* =========================== Declaration-site variance==================== */
 
-/* In the following types of generics where type parameter is used in specific context, the type parameter type is defined at the time of declaration.
+/* In the following types of generics where type parameter is used in specific context, the type-parameter type is defined at the time of declaration.
 * These types of variance are called declaration-site variance. */
 class Greeting1<out T>(val msg: T){ // note I have used val not var as msg cannot be set again as it is of covariance type.
 

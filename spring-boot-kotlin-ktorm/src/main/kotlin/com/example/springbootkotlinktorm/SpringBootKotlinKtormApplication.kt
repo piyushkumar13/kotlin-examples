@@ -1,6 +1,7 @@
 package com.example.springbootkotlinktorm
 
 import com.example.springbootkotlinktorm.config.DbConfigProperties5
+import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.context.properties.EnableConfigurationProperties
