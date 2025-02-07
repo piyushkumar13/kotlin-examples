@@ -29,7 +29,7 @@ class Human {
      *
      * if property is declared as public then its getters and setters would also be public. Since public property can be set and get from anywhere,
      * means the getters and setters generated behind the scene should be public only so that getting and setting of property could be done
-     * from anywhere within the class itself. Same can be verified by checking decompiled code.
+     * from anywhere. Same can be verified by checking decompiled code.
      *  */
 
 

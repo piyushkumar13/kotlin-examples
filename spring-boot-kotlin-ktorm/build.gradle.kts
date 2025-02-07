@@ -11,6 +11,7 @@ dependencies {
     implementation("org.ktorm:ktorm-core")
     implementation("org.ktorm:ktorm-support-postgresql")
     implementation("org.ktorm:ktorm-ksp-annotations")
+    implementation("net.datafaker:datafaker")
 
     ksp("org.ktorm:ktorm-ksp-compiler")
 

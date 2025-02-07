@@ -26,3 +26,12 @@ fun greater2(a: Int, b: Int): Int =
         println("b is greater than a")
         b // whatever is the last statement i.e returned. Here, b is returned.
     }
+
+fun greater3(a: Int, b: Int): Int =
+    if (a > b) {
+        println("a is greater than b")
+        a // whatever is the last statement i.e returned. Here, a is returned.
+    } else {
+        println("b is greater than a")
+        b // whatever is the last statement i.e returned. Here, b is returned.
+    }

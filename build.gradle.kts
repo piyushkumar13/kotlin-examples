@@ -85,6 +85,7 @@ subprojects {
             dependency("org.ktorm:ktorm-ksp-annotations:${ktormVersion}")
             dependency("org.ktorm:ktorm-ksp-compiler:${ktormVersion}")
             dependency("org.postgresql:postgresql:42.7.4")
+            dependency("net.datafaker:datafaker:2.4.2")
         }
     }
 }

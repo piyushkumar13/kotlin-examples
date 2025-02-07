@@ -1,6 +1,8 @@
 package com.example.springbootkotlinktorm.config
 
 import org.ktorm.database.Database
+import org.ktorm.logging.ConsoleLogger
+import org.ktorm.logging.LogLevel
 import org.ktorm.support.postgresql.PostgreSqlDialect
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.jdbc.DataSourceBuilder
@@ -33,7 +35,8 @@ class KtormDbConfig(
             url = dbConfigProps1.url,
             driver = "org.postgresql.Driver",
             user = dbConfigProps1.username,
-            dialect = PostgreSqlDialect()
+            dialect = PostgreSqlDialect(),
+            logger = ConsoleLogger(LogLevel.DEBUG)
         )
     }
 }

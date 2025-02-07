@@ -1,6 +1,7 @@
 package com.example.springbootkotlinktorm.domain
 
 import jakarta.persistence.*
+import java.time.LocalDate
 
 /**
  * @author Piyush Kumar.
@@ -14,9 +15,13 @@ data class EmployeeJPAEntity(
     @Id
     private var id: Int,
     private var name: String,
+    private var salary: Double?,
     private var company: String,
+    private var job: String?,
+    private var hireDate: LocalDate?,
+    private var managerId: String?,
 
-    @OneToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "department_id")
     private var department: DepartmentJPAEntity
 )

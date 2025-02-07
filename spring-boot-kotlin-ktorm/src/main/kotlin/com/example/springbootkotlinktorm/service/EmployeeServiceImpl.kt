@@ -122,7 +122,12 @@ class EmployeeServiceImpl(
             id = id,
             name = name,
             company = company,
-            department = deptEntity
+            department = deptEntity,
+            salary = 0.0,
+            managerId = null,
+            hireDate = null,
+            job = null
+
         )
     }
 
