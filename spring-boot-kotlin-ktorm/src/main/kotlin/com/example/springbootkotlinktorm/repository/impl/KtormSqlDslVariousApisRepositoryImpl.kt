@@ -44,6 +44,7 @@ class KtormSqlDslVariousApisRepositoryImpl(private val database: Database) {
         }
         println("Emps are :::: $emps")
 
+        /* We can also do below */
 //        getAllQRes.forEach {
 //            println(it[Employees.id])
 //            println(it[Employees.name])
