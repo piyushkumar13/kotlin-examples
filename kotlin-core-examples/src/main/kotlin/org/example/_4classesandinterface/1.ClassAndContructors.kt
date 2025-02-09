@@ -31,6 +31,9 @@ fun main(){
     val student7 = Student7( 1 , "Piyush")
     println("Student7 name : ${student7.name} and ${student7.id}")
 
+    val student7a = Student7( 2 )
+    println("Student7a id : ${student7.id} and ${student7.name}")
+
     val student8 = Student8( 1 , "Piyush")
     println("Student8 name : ${student8.name} and ${student8.id}")
 

@@ -23,6 +23,8 @@ fun main() {
     display2(Human1) // this works since Human is the implementation of Mammal.
 
     display3(Human2)
+
+//    display3(Human3) // will not compile as subtype should be of of Mammal and Vertibrate
 }
 
 
@@ -74,6 +76,13 @@ object Human2 : Mammal, Vertibrate {
 
     override fun hasBackbone(): Boolean {
         TODO("Not yet implemented")
+    }
+}
+
+object Human3 : Vertibrate {
+
+    override fun hasBackbone(): Boolean {
+        return true
     }
 
 }
