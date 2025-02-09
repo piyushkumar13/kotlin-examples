@@ -7,6 +7,7 @@ import com.example.springbootkotlinktorm.repository.EmployeeJPARepository
 import com.example.springbootkotlinktorm.repository.EmployeeKtormAnnotationRepository
 import com.example.springbootkotlinktorm.repository.EmployeeKtormEntityRepository
 import com.example.springbootkotlinktorm.repository.EmployeeKtormSqlDslRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 /**
@@ -18,10 +19,10 @@ import org.springframework.stereotype.Service
 @Service
 class EmployeeServiceImpl(
 
-    private val employeeJPARepository: EmployeeJPARepository,
-    private val employeeKtormEntityRepository: EmployeeKtormEntityRepository,
-    private val employeeKtormSqlDslRepository: EmployeeKtormSqlDslRepository,
-    private val employeeKtormAnnotationRepository: EmployeeKtormAnnotationRepository
+    @Autowired private val employeeJPARepository: EmployeeJPARepository,
+    @Autowired private val employeeKtormEntityRepository: EmployeeKtormEntityRepository,
+    @Autowired private val employeeKtormSqlDslRepository: EmployeeKtormSqlDslRepository,
+    @Autowired private val employeeKtormAnnotationRepository: EmployeeKtormAnnotationRepository
 
 ) : EmployeeService {
 
