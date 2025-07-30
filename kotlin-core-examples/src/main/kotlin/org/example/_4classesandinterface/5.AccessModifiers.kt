@@ -25,7 +25,7 @@ open class Person {
     public var country = "default country"
 }
 
-class Employee: Person() {
+class Employee : Person() {
 
     fun accessElements(){
 

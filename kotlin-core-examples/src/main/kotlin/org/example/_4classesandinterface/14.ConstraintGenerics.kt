@@ -84,5 +84,13 @@ object Human3 : Vertibrate {
     override fun hasBackbone(): Boolean {
         return true
     }
+}
+
+/* We can use above contraints with classes as well.*/
+class Human4<T: Mammal>(val  a: T) {
+
+}
+
+class Human5<T>(val  a: T) where T: Mammal, T: Vertibrate {
 
 }

@@ -40,11 +40,11 @@ class MyClass {
 
 class MyClass2 {
 
-    companion object MyObject2 {
+    companion object MyObject2 { // created as public static final class
 
-        var name: String = "Piyush" // Behind the scene created as "private static String name"
+        var name: String = "Piyush" // Behind the scene created as "private static String name" at MyClass2 level
 
-        fun writeMsg() { // Behind the scene created as "public final"
+        fun writeMsg() { // Behind the scene created as "public final" within MyObject2 class
             println("Inside object writeMsg. ")
         }
     }

@@ -34,7 +34,7 @@ object Customer {
 
     fun printMessage(msg: String) { // Behind the scene accessed using singleton object.
 
-        println("Printing message : " + msg)
+        println("Printing message for $name : " + msg)
     }
 }
 

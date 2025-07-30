@@ -21,7 +21,6 @@ fun main(){
     println("Range4 is : $range4")
 
     /* We can also have ranges for characters. */
-
     val range5 = 'a'..'z'
     println("Range 5 is : $range5")
 

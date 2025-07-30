@@ -100,7 +100,7 @@ class Student5(val name: String, id: Int){
 
 /* ============================ Secondary constructors ================================ */
 
-class Student6{
+class Student6{ // It means there is no explicit default constructor(you can check by decompiling code)
 
     var id: Int
     var name: String
@@ -120,7 +120,7 @@ class Student7(val id: Int) {
     }
 }
 
-class Student8(){
+class Student8(){ // It means there is an explicit default constructor which sets id=1 & name=""(you can check by decompiling code)
 
     var id: Int = 1
     var name: String = ""

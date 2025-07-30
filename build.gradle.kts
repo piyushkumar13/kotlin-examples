@@ -49,7 +49,7 @@ subprojects {
 
     /*Note that setting a toolchain via the kotlin extension updates the toolchain for Java compile tasks as well.*/
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(21)
     }
 
     /* So, this is not required as setting a toolchain via the kotlin extension updates the toolchain for Java compile tasks as well. */

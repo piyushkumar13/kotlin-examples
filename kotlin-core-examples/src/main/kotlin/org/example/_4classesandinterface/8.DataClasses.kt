@@ -21,9 +21,9 @@ fun main() {
         println("Objects are not equal.")
     }
 
-    val (firstName, lastName) = User("Ab", "Kumar") // here, we have destructured the data object.
-    println("Destructured firstName : $firstName")
-    println("Destructured lastName : $lastName")
+    val (firstName1, lastName1) = User("Ab", "Kumar") // here, we have destructured the data object.
+    println("Destructured firstName : $firstName1")
+    println("Destructured lastName : $lastName1")
 }
 
 data class User(var firstName: String, val lastName: String)

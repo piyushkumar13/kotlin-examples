@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration
  * @since 01/10/24.
  */
 
-//@EnableConfigurationProperties(DbConfigProperties1::class) // If we are providing EnbleConfigurationProperties here, then we also need to create its bean in config file.
+//@EnableConfigurationProperties(DbConfigProperties1::class) // If we are providing EnbleConfigurationProperties here, then we also need to create its bean in configuration class file.
 @ConfigurationProperties(prefix = "spring.datasource")
 class DbConfigProperties1 (
     var url: String,

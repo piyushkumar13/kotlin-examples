@@ -20,7 +20,8 @@ class KtormDbConfig(
     val dbConfigProps2: DbConfigProperties2,
     val dbConfigProps3: DbConfigProperties3,
     val dbConfigProps4: DbConfigProperties4,
-    val dbConfigProps5: DbConfigProperties5
+    val dbConfigProps5: DbConfigProperties5,
+    @Value("\${spring.datasource.url}") val url2: String // we can specify value annotation here as well.
 ) {
 
     @Value("\${spring.datasource.url}")

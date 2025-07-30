@@ -39,3 +39,10 @@ infix fun Int.greaterValueInfix(operand2: Int): Int {
         operand2
     }
 }
+
+infix fun Int.greaterValueInfix2(operand2: Int): Int =
+    if (this > operand2) {
+        this
+    } else {
+        operand2
+    }

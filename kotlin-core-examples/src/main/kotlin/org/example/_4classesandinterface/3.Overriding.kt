@@ -26,6 +26,8 @@ fun main(){
 open class Animal1 {
 
     open val name: String = "Animal" // Val property can be overriden by val or var property but var property can only be overriden by var property.
+    var type = "Mammal" // Behind the scene non-open property have final getters and setters, that's y they cannot be inherited until open.
+    open var foodType = "Herbivorous"
 
     open fun color() {
 
@@ -35,7 +37,9 @@ open class Animal1 {
 
 class Dog1 : Animal1() {
 
-    override val name = "Jack"
+    override var name = "Jack"
+//    override var type = "Mammal" // this will give compilation error sicne type is not open.
+    override var foodType = "Carnivorous"
 
     override fun color() {
         println("Black")
@@ -45,6 +49,7 @@ class Dog1 : Animal1() {
 class Cat1 : Animal1() {
 
     override var name = "Sufi"
+    override var foodType = "Carnivorous"
 
     override fun color() {
         println("White")

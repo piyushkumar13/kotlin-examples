@@ -13,6 +13,8 @@ fun main(){
     println( CreditCardType.GOLD.name) // gets name property
 
 
+    println( CreditCardType2.GOLD)
+    println( CreditCardType2.GOLD.name)
     println( CreditCardType2.GOLD.id)
 }
 
